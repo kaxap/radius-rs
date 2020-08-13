@@ -1,0 +1,70 @@
+/// Definitions for vendor Proxim, vendor value 841
+use nom::IResult;
+#[allow(unused_imports)]
+use nom::number::streaming::{be_u64, be_u32, be_u16, be_u8};
+#[allow(unused_imports)]
+use std::net::{Ipv4Addr, Ipv6Addr};
+use crate::radius::*;
+
+
+pub fn parse(i: &[u8], typ: u8) -> IResult<&[u8], Attribute> {
+    match typ {
+		4 => map!{i, be_u32, |v| Attribute::VsaProximE1VlanMode(v)},
+		5 => value!(i, Attribute::VsaProximSuVlanName(i)),
+		6 => map!{i, be_u32, |v| Attribute::VsaProximE1AccessVlanId(v)},
+		7 => map!{i, be_u32, |v| Attribute::VsaProximE1AccessVlanPri(v)},
+		8 => map!{i, be_u32, |v| Attribute::VsaProximMgmtVlanId(v)},
+		9 => map!{i, be_u32, |v| Attribute::VsaProximMgmtVlanPri(v)},
+		10 => map!{i, be_u32, |v| Attribute::VsaProximE1Trunkid01(v)},
+		11 => map!{i, be_u32, |v| Attribute::VsaProximE1Trunkid02(v)},
+		12 => map!{i, be_u32, |v| Attribute::VsaProximE1Trunkid03(v)},
+		13 => map!{i, be_u32, |v| Attribute::VsaProximE1Trunkid04(v)},
+		14 => map!{i, be_u32, |v| Attribute::VsaProximE1Trunkid05(v)},
+		15 => map!{i, be_u32, |v| Attribute::VsaProximE1Trunkid06(v)},
+		16 => map!{i, be_u32, |v| Attribute::VsaProximE1Trunkid07(v)},
+		17 => map!{i, be_u32, |v| Attribute::VsaProximE1Trunkid08(v)},
+		18 => map!{i, be_u32, |v| Attribute::VsaProximE1Trunkid09(v)},
+		19 => map!{i, be_u32, |v| Attribute::VsaProximE1Trunkid10(v)},
+		20 => map!{i, be_u32, |v| Attribute::VsaProximE1Trunkid11(v)},
+		21 => map!{i, be_u32, |v| Attribute::VsaProximE1Trunkid12(v)},
+		22 => map!{i, be_u32, |v| Attribute::VsaProximE1Trunkid13(v)},
+		23 => map!{i, be_u32, |v| Attribute::VsaProximE1Trunkid14(v)},
+		24 => map!{i, be_u32, |v| Attribute::VsaProximE1Trunkid15(v)},
+		25 => map!{i, be_u32, |v| Attribute::VsaProximE1Trunkid16(v)},
+		26 => map!{i, be_u32, |v| Attribute::VsaProximSuVlanTableStatus(v)},
+		32 => map!{i, be_u32, |v| Attribute::VsaProximServiceVlanId(v)},
+		33 => map!{i, be_u32, |v| Attribute::VsaProximServiceVlanPri(v)},
+		34 => map!{i, be_u32, |v| Attribute::VsaProximQosClassIndex(v)},
+		35 => map!{i, be_u32, |v| Attribute::VsaProximQosClassSuStatus(v)},
+		40 => map!{i, be_u32, |v| Attribute::VsaProximE2VlanMode(v)},
+		41 => map!{i, be_u32, |v| Attribute::VsaProximE2AccessVlanId(v)},
+		42 => map!{i, be_u32, |v| Attribute::VsaProximE2AccessVlanPri(v)},
+		43 => map!{i, be_u32, |v| Attribute::VsaProximE2Trunkid01(v)},
+		44 => map!{i, be_u32, |v| Attribute::VsaProximE2Trunkid02(v)},
+		45 => map!{i, be_u32, |v| Attribute::VsaProximE2Trunkid03(v)},
+		46 => map!{i, be_u32, |v| Attribute::VsaProximE2Trunkid04(v)},
+		47 => map!{i, be_u32, |v| Attribute::VsaProximE2Trunkid05(v)},
+		48 => map!{i, be_u32, |v| Attribute::VsaProximE2Trunkid06(v)},
+		49 => map!{i, be_u32, |v| Attribute::VsaProximE2Trunkid07(v)},
+		50 => map!{i, be_u32, |v| Attribute::VsaProximE2Trunkid08(v)},
+		51 => map!{i, be_u32, |v| Attribute::VsaProximE2Trunkid09(v)},
+		52 => map!{i, be_u32, |v| Attribute::VsaProximE2Trunkid10(v)},
+		53 => map!{i, be_u32, |v| Attribute::VsaProximE2Trunkid11(v)},
+		54 => map!{i, be_u32, |v| Attribute::VsaProximE2Trunkid12(v)},
+		55 => map!{i, be_u32, |v| Attribute::VsaProximE2Trunkid13(v)},
+		56 => map!{i, be_u32, |v| Attribute::VsaProximE2Trunkid14(v)},
+		57 => map!{i, be_u32, |v| Attribute::VsaProximE2Trunkid15(v)},
+		58 => map!{i, be_u32, |v| Attribute::VsaProximE2Trunkid16(v)},
+		59 => map!{i, be_u32, |v| Attribute::VsaProximQinqStatus(v)},
+		60 => map!{i, be_u32, |v| Attribute::VsaProximServiceVlanTpid(v)},
+		61 => map!{i, be_u32, |v| Attribute::VsaProximE1PortVlanId(v)},
+		62 => map!{i, be_u32, |v| Attribute::VsaProximE1PortVlanPri(v)},
+		63 => map!{i, be_u32, |v| Attribute::VsaProximE1AllowUntag(v)},
+		64 => map!{i, be_u32, |v| Attribute::VsaProximE2PortVlanId(v)},
+		65 => map!{i, be_u32, |v| Attribute::VsaProximE2PortVlanPri(v)},
+		66 => map!{i, be_u32, |v| Attribute::VsaProximE2AllowUntag(v)},
+		68 => map!{i, be_u32, |v| Attribute::VsaProximE1SuAllowUntagMgmt(v)},
+		69 => map!{i, be_u32, |v| Attribute::VsaProximE2SuAllowUntagMgmt(v)},
+        _ => value!(i, Attribute::VsaUnknown(841, typ, i)),
+    }
+}
